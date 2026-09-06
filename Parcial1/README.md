@@ -11,5 +11,5 @@ configuración, scripts y evidencias de su despliegue.
 ## Integrantes
 
 - `juan-baloco/` — Juan José Baloco Sánchez, código 2230722
-- (pendiente)
+- `carlos-chalaca/` — Carlos Andrés Chalaca Patiño, código 2226213
 - (pendiente)
