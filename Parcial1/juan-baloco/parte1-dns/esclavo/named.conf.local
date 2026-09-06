@@ -1,0 +1,24 @@
+// Zonas del servidor DNS esclavo - empresa.local
+// Servicios Telematicos - UAO
+
+include "/etc/bind/keys/esclavo.key";
+
+server 192.168.50.2 {
+    keys { esclavo-key; };
+};
+
+// Zona directa (secundaria)
+zone "empresa.local" {
+    type slave;
+    file "/var/cache/bind/db.empresa.local";
+    masters { 192.168.50.2; };
+    allow-transfer { none; };
+};
+
+// Zona inversa (secundaria)
+zone "50.168.192.in-addr.arpa" {
+    type slave;
+    file "/var/cache/bind/db.192";
+    masters { 192.168.50.2; };
+    allow-transfer { none; };
+};

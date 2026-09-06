@@ -1,0 +1,22 @@
+// Zonas del servidor DNS maestro - empresa.local
+// Servicios Telematicos - UAO
+
+include "/etc/bind/keys/esclavo.key";
+
+// Zona directa
+zone "empresa.local" {
+    type master;
+    file "/etc/bind/db.empresa.local";
+    allow-transfer { key esclavo-key; };
+    also-notify { 192.168.50.3; };
+    ixfr-from-differences yes;
+};
+
+// Zona inversa - red 192.168.50.0/24
+zone "50.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192";
+    allow-transfer { key esclavo-key; };
+    also-notify { 192.168.50.3; };
+    ixfr-from-differences yes;
+};

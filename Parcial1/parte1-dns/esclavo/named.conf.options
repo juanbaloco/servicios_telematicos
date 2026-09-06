@@ -1,0 +1,29 @@
+options {
+    directory "/var/cache/bind";
+
+    // ---------- Interfaces de escucha ----------
+    listen-on { 127.0.0.1; 192.168.50.3; };
+    listen-on-v6 { none; };
+
+    // ---------- Hardening ----------
+    // Servidor autoritativo: no debe actuar como resolver abierto
+    // (evita amplificacion DDoS y cache poisoning)
+    recursion no;
+    allow-recursion { none; };
+
+    // Solo responder consultas de la red local
+    allow-query { 127.0.0.1; 192.168.50.0/24; };
+
+    // No revelar la version de BIND
+    version "no disponible";
+
+    // Sin validacion DNSSEC (entorno aislado sin acceso a la raiz)
+    dnssec-validation no;
+
+    // ---------- Response Rate Limiting ----------
+    rate-limit {
+        responses-per-second 10;
+        window 5;
+        log-only no;
+    };
+};

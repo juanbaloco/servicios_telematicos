@@ -1,0 +1,8 @@
+05-Sep-2026 23:50:36.977 notify: info: zone 50.168.192.in-addr.arpa/IN: sending notifies (serial 2026090501)
+05-Sep-2026 23:50:36.981 notify: info: zone empresa.local/IN: sending notifies (serial 2026090503)
+05-Sep-2026 23:52:59.160 xfer-out: info: client @0x7f20f0071388 192.168.50.3#46605 (empresa.local): transfer of 'empresa.local/IN': AXFR started (serial 2026090503)
+05-Sep-2026 23:52:59.160 xfer-out: info: client @0x7f20f0071388 192.168.50.3#46605 (empresa.local): transfer of 'empresa.local/IN': AXFR ended: 1 messages, 19 records, 519 bytes, 0.001 secs (519000 bytes/sec) (serial 2026090503)
+06-Sep-2026 00:02:24.351 notify: info: client @0x7f20f006bca8 192.168.50.2#36156: received notify for zone 'empresa.local'
+06-Sep-2026 00:02:24.847 notify: info: client @0x7f20f006bca8 192.168.50.2#51886: received notify for zone '50.168.192.in-addr.arpa'
+06-Sep-2026 00:04:07.443 notify: info: client @0x7f20f006bca8 192.168.50.2#42584: received notify for zone 'empresa.local'
+06-Sep-2026 00:04:07.951 notify: info: client @0x7f20f80084d8 192.168.50.2#57312: received notify for zone '50.168.192.in-addr.arpa'

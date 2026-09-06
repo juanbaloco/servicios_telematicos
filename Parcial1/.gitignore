@@ -1,0 +1,4 @@
+.vagrant/
+*.key
+!*.key.ejemplo
+*.deb
