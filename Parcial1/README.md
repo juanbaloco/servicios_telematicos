@@ -8,7 +8,7 @@ Universidad Autonoma de Occidente - Facultad de Ingenieria
 
 - Juan Jose Baloco Sanchez - 2230722
 - Carlos Andres Chalaca Patino - 2226213
-- (pendiente)
+-  Daniel Santiago Truque Martinez - 1108561484
 
 ## Topologia
 
