@@ -1,0 +1,12 @@
+# Segundo Parcial 2230722 - Evita que la red NAT de VirtualBox (eth0) imponga
+# sus propios servidores DNS (por DHCPv4 ni por anuncios IPv6), para que el
+# cliente use SOLO los resolvers DoT definidos en /etc/systemd/resolved.conf.
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4-overrides:
+        use-dns: false
+      dhcp6-overrides:
+        use-dns: false
+      accept-ra: false

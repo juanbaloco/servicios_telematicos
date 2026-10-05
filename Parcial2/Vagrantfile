@@ -1,0 +1,57 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+# Segundo Parcial - Servicios Telematicos (UAO) - Topologia FTPS / DoT / SFTP
+#
+#   Cliente (Windows FileZilla 192.168.56.1 / VM cliente 192.168.56.20)
+#        |  red "publica"  192.168.56.0/24  (host-only, la ve Windows)
+#   Servidor 1 (UFW)  eth2 = 192.168.56.10  <-- <ip publica>
+#                     eth1 = 192.168.50.3
+#        |  red interna 192.168.50.0/24 (intnet: ni Windows ni el cliente la ven)
+#   Servidor 2 (vsftpd / SFTP)  eth1 = 192.168.50.2
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04"
+
+  # Servidor 2: solo red interna -> no es alcanzable desde el cliente
+  config.vm.define "servidor2" do |servidor2|
+    servidor2.vm.hostname = "servidor2"
+    servidor2.vm.network :private_network, ip: "192.168.50.2", virtualbox__intnet: "red_interna"
+    servidor2.vm.provider "virtualbox" do |vb|
+      vb.name = "parcial2_servidor2"
+    end
+    servidor2.vm.provision "shell", inline: <<-SHELL
+      apt-get update -y
+      apt-get install -y vsftpd openssl
+      systemctl disable --now nginx 2>/dev/null || true
+    SHELL
+  end
+
+  # Servidor 1: firewall UFW, unico punto de entrada
+  config.vm.define "servidor1" do |servidor1|
+    servidor1.vm.hostname = "servidor1"
+    servidor1.vm.network :private_network, ip: "192.168.50.3", virtualbox__intnet: "red_interna"
+    servidor1.vm.network :private_network, ip: "192.168.56.10"
+    servidor1.vm.provider "virtualbox" do |vb|
+      vb.name = "parcial2_servidor1"
+    end
+    servidor1.vm.provision "shell", inline: <<-SHELL
+      apt-get update -y
+      apt-get install -y ufw
+      systemctl disable --now apache2 nginx 2>/dev/null || true
+    SHELL
+  end
+
+  # Cliente Linux: openssl s_client, sftp y DNS sobre TLS (Parte 2)
+  config.vm.define "cliente" do |cliente|
+    cliente.vm.hostname = "cliente"
+    cliente.vm.network :private_network, ip: "192.168.56.20"
+    cliente.vm.provider "virtualbox" do |vb|
+      vb.name = "parcial2_cliente"
+    end
+    cliente.vm.provision "shell", inline: <<-SHELL
+      apt-get update -y
+      apt-get install -y lftp openssl tcpdump dnsutils
+    SHELL
+  end
+end
