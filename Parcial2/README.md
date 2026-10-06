@@ -1,6 +1,8 @@
 # Segundo Parcial – Servicios Telemáticos (UAO)
 
-**Estudiante:** Juan José Baloco Sánchez · **Código:** 2230722 · **Sustentación:** 6 de octubre de 2026
+**Estudiante:** Juan José Baloco Sánchez · **Código:** 2230722 
+**Estudiante:** Carlos Andres Chalaca Patino - **Codigo:** 2226213
+**Estudiante:** Daniel Santiago Truque Martinez - **Codigo:** 1108561484
 
 ## Topología
 
