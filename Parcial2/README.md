@@ -21,6 +21,7 @@ La `<ip pública>` del enunciado corresponde en este entorno a **192.168.56.10**
 
 | Carpeta / archivo | Máquina | Descripción |
 |---|---|---|
+| [`RESPUESTAS.md`](RESPUESTAS.md) | – | Respuestas a las preguntas de cada punto y tabla comparativa FTPS vs SFTP (punto 19) |
 | `Vagrantfile` | – | Definición de las tres VMs y sus redes |
 | `servidor1/before.rules` | Servidor 1 | Reglas NAT: DNAT 21, 50000:50010 y 2222→22 hacia 192.168.50.2, más MASQUERADE |
 | `servidor1/user.rules`, `servidor1/ufw` (`/etc/default/ufw`), `servidor1/sysctl.conf` | Servidor 1 | Reglas `ufw route`, políticas por defecto y reenvío IP |
